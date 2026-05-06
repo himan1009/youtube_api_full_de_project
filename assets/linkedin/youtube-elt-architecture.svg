@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500">
+  <defs>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7ed"/>
+      <stop offset="0.5" stop-color="#f0fdfa"/>
+      <stop offset="1" stop-color="#eef2ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .panel { fill: #ffffff; stroke: #d7dee8; stroke-width: 2; filter: url(#shadow); }
+      .soft { fill: #f8fafc; stroke: #d7dee8; stroke-width: 2; }
+      .headline { font-family: Arial; font-size: 50px; font-weight: 800; fill: #0f172a; }
+      .subtitle { font-family: Arial; font-size: 25px; font-weight: 400; fill: #475569; }
+      .section { font-family: Arial; font-size: 24px; font-weight: 800; fill: #0f172a; }
+      .label { font-family: Arial; font-size: 22px; font-weight: 700; fill: #111827; }
+      .small { font-family: Arial; font-size: 18px; font-weight: 400; fill: #475569; }
+      .tiny { font-family: Arial; font-size: 15px; font-weight: 700; fill: #64748b; text-transform: uppercase; }
+      .mono { font-family: Courier; font-size: 18px; font-weight: 700; fill: #334155; }
+      .white { fill: #ffffff; }
+      .red { fill: #ef4444; }
+      .amber { fill: #f59e0b; }
+      .teal { fill: #14b8a6; }
+      .green { fill: #22c55e; }
+      .indigo { fill: #6366f1; }
+      .ink { fill: #0f172a; }
+      .stroke { stroke: #334155; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .thin { stroke: #94a3b8; stroke-width: 2; fill: none; }
+      .pillText { font-family: Arial; font-size: 16px; font-weight: 700; fill: #0f172a; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1200" height="1500"/>
+  <rect x="48" y="42" width="1104" height="1416" rx="28" class="soft"/>
+
+  <text x="92" y="120" class="headline">YouTube Analytics ELT Pipeline</text>
+  <text x="92" y="164" class="subtitle">Dockerized Apache Airflow + CeleryExecutor + PostgreSQL warehouse</text>
+
+  <g transform="translate(900 82)">
+    <rect x="0" y="0" width="200" height="46" rx="23" fill="#0f172a"/>
+    <text x="24" y="30" font-family="Arial" font-size="17" font-weight="700" fill="#ffffff">Tests + CI/CD done</text>
+  </g>
+
+  <g id="source" transform="translate(84 220)">
+    <rect width="232" height="190" rx="18" class="panel"/>
+    <circle cx="56" cy="62" r="30" class="red"/>
+    <path d="M49 45 L49 79 L78 62 Z" fill="#ffffff"/>
+    <text x="32" y="124" class="label">YouTube Data API</text>
+    <text x="32" y="153" class="small">Channel handle</text>
+    <text x="32" y="178" class="small">Uploads playlist</text>
+  </g>
+
+  <g id="dag1" transform="translate(390 210)">
+    <rect width="724" height="220" rx="18" class="panel"/>
+    <text x="28" y="42" class="section">DAG 1: produce_json</text>
+    <text x="520" y="42" class="tiny">Runs daily at 14:00</text>
+
+    <g transform="translate(28 76)">
+      <rect width="142" height="92" rx="14" fill="#fee2e2" stroke="#fecaca" stroke-width="2"/>
+      <text x="18" y="36" class="pillText">get_playlist_id</text>
+      <text x="18" y="62" class="small">Find uploads</text>
+    </g>
+    <path class="stroke" d="M178 122 L225 122"/>
+    <g transform="translate(232 76)">
+      <rect width="132" height="92" rx="14" fill="#ffedd5" stroke="#fed7aa" stroke-width="2"/>
+      <text x="18" y="36" class="pillText">get_video_ids</text>
+      <text x="18" y="62" class="small">Paginated IDs</text>
+    </g>
+    <path class="stroke" d="M372 122 L419 122"/>
+    <g transform="translate(426 76)">
+      <rect width="142" height="92" rx="14" fill="#ccfbf1" stroke="#99f6e4" stroke-width="2"/>
+      <text x="18" y="36" class="pillText">extract_data</text>
+      <text x="18" y="62" class="small">Stats + snippet</text>
+    </g>
+    <path class="stroke" d="M576 122 L623 122"/>
+    <g transform="translate(630 76)">
+      <rect width="66" height="92" rx="14" fill="#e0e7ff" stroke="#c7d2fe" stroke-width="2"/>
+      <text x="18" y="35" class="pillText">JSON</text>
+      <text x="18" y="62" class="small">File</text>
+    </g>
+  </g>
+
+  <path class="stroke" d="M316 315 L382 315"/>
+  <path class="stroke" d="M752 430 L752 510"/>
+
+  <g id="landing" transform="translate(512 508)">
+    <rect width="480" height="116" rx="18" class="panel"/>
+    <text x="28" y="42" class="section">Landing Zone</text>
+    <text x="28" y="76" class="mono">data/YT_data_YYYY-MM-DD.json</text>
+    <text x="28" y="101" class="small">Raw video metrics stored as a daily snapshot</text>
+  </g>
+
+  <path class="stroke" d="M752 624 L752 704"/>
+
+  <g id="dag2" transform="translate(84 704)">
+    <rect width="1030" height="290" rx="18" class="panel"/>
+    <text x="28" y="42" class="section">DAG 2: update_db</text>
+    <text x="840" y="42" class="tiny">Runs daily at 15:00</text>
+
+    <g transform="translate(42 84)">
+      <rect width="236" height="148" rx="16" fill="#fef3c7" stroke="#fde68a" stroke-width="2"/>
+      <text x="24" y="40" class="label">Staging table</text>
+      <text x="24" y="72" class="mono">staging.yt_api</text>
+      <text x="24" y="104" class="small">Insert, update, delete</text>
+      <text x="24" y="129" class="small">Raw API-shaped rows</text>
+    </g>
+
+    <path class="stroke" d="M296 158 L374 158"/>
+
+    <g transform="translate(392 84)">
+      <rect width="236" height="148" rx="16" fill="#dcfce7" stroke="#bbf7d0" stroke-width="2"/>
+      <text x="24" y="40" class="label">Transform layer</text>
+      <text x="24" y="72" class="small">Duration parsing</text>
+      <text x="24" y="99" class="small">Shorts vs Normal</text>
+      <text x="24" y="126" class="small">Typed warehouse fields</text>
+    </g>
+
+    <path class="stroke" d="M646 158 L724 158"/>
+
+    <g transform="translate(742 84)">
+      <rect width="236" height="148" rx="16" fill="#dbeafe" stroke="#bfdbfe" stroke-width="2"/>
+      <text x="24" y="40" class="label">Core table</text>
+      <text x="24" y="72" class="mono">core.yt_api</text>
+      <text x="24" y="104" class="small">Analytics-ready model</text>
+      <text x="24" y="129" class="small">Clean Postgres schema</text>
+    </g>
+  </g>
+
+  <g id="quality" transform="translate(84 1036)">
+    <rect width="1030" height="148" rx="18" class="panel"/>
+    <text x="28" y="42" class="section">Quality + Delivery</text>
+
+    <g transform="translate(38 72)">
+      <rect width="178" height="54" rx="14" fill="#fef3c7" stroke="#fde68a" stroke-width="2"/>
+      <text x="22" y="34" class="label">Unit tests</text>
+    </g>
+    <path class="thin" d="M226 99 L280 99"/>
+    <g transform="translate(290 72)">
+      <rect width="210" height="54" rx="14" fill="#dcfce7" stroke="#bbf7d0" stroke-width="2"/>
+      <text x="22" y="34" class="label">DAG import checks</text>
+    </g>
+    <path class="thin" d="M510 99 L564 99"/>
+    <g transform="translate(574 72)">
+      <rect width="188" height="54" rx="14" fill="#e0e7ff" stroke="#c7d2fe" stroke-width="2"/>
+      <text x="22" y="34" class="label">GitHub Actions</text>
+    </g>
+    <path class="thin" d="M772 99 L826 99"/>
+    <g transform="translate(836 72)">
+      <rect width="158" height="54" rx="14" fill="#fee2e2" stroke="#fecaca" stroke-width="2"/>
+      <text x="22" y="34" class="label">Build + push</text>
+    </g>
+  </g>
+
+  <g id="infra" transform="translate(84 1218)">
+    <rect width="1030" height="150" rx="18" class="panel"/>
+    <text x="28" y="42" class="section">Containerized Runtime</text>
+
+    <g transform="translate(38 64)">
+      <rect width="190" height="82" rx="14" fill="#eef2ff" stroke="#c7d2fe" stroke-width="2"/>
+      <text x="22" y="35" class="label">Airflow</text>
+      <text x="22" y="61" class="small">Web + Scheduler</text>
+    </g>
+    <path class="thin" d="M238 105 L292 105"/>
+    <g transform="translate(302 64)">
+      <rect width="160" height="82" rx="14" fill="#ede9fe" stroke="#ddd6fe" stroke-width="2"/>
+      <text x="22" y="35" class="label">Worker</text>
+      <text x="22" y="61" class="small">Celery tasks</text>
+    </g>
+    <path class="thin" d="M472 105 L526 105"/>
+    <g transform="translate(536 64)">
+      <rect width="150" height="82" rx="14" fill="#fee2e2" stroke="#fecaca" stroke-width="2"/>
+      <text x="22" y="35" class="label">Redis</text>
+      <text x="22" y="61" class="small">Broker</text>
+    </g>
+    <path class="thin" d="M696 105 L750 105"/>
+    <g transform="translate(760 64)">
+      <rect width="220" height="82" rx="14" fill="#dcfce7" stroke="#bbf7d0" stroke-width="2"/>
+      <text x="22" y="35" class="label">PostgreSQL</text>
+      <text x="22" y="61" class="small">metadata, results, ELT DB</text>
+    </g>
+  </g>
+
+  <g id="footer" transform="translate(84 1414)">
+    <rect width="1030" height="1" fill="#cbd5e1"/>
+    <text x="0" y="44" class="small">Built with Python, Apache Airflow 2.9, Docker Compose, Redis, CeleryExecutor, PostgreSQL, YouTube Data API, and CI/CD.</text>
+  </g>
+</svg>

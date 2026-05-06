@@ -18,7 +18,7 @@ def parse_duration(duration_str):
         days = values['D'],
         hours = values['H'],
         minutes = values['M'],
-        secondsays = values['S']
+        seconds = values['S']
     )
     
     return total_duration
@@ -29,7 +29,6 @@ def transform_data(row):
     row['Duration'] = (datetime.min + duration_td).time()
     row['Video_Type'] = 'Shorts' if duration_td.total_seconds() < 60 else 'Normal'
     return row
-
 
 
 
